@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="group_newo_integration" model="res.groups">
+        <field name="name">Newo AI Integration</field>
+        <field name="api_key_duration">3650</field>
+        <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
+        <field name="comment">Access for the Newo AI Receptionist integration user. Inherits Internal User role; intended only for the dedicated integration account, not for humans.</field>
+    </record>
+</odoo>

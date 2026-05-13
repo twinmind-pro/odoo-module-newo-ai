@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="res_config_settings_view_form" model="ir.ui.view">
+        <field name="name">res.config.settings.view.form.inherit.newo_ai_receptionist</field>
+        <field name="model">res.config.settings</field>
+        <field name="inherit_id" ref="base.res_config_settings_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//form" position="inside">
+                <app string="Newo AI Receptionist" name="newo_ai_receptionist">
+                    <block title="Step 1 — Data Sharing Consent" id="newo_consent_block">
+                        <setting string="Share data with Newo" help="The Newo platform reads and writes contacts, calendar events, and leads using the credentials generated below. Verify this against your privacy policy before enabling.">
+                            <field name="newo_data_consent"/>
+                        </setting>
+                    </block>
+                    <block title="Step 2 — Generate Integration Credentials" id="newo_provision_block">
+                        <setting string="Integration State">
+                            <field name="newo_integration_state" widget="badge"
+                                   decoration-success="newo_integration_state == 'active'"
+                                   decoration-warning="newo_integration_state == 'archived'"
+                                   decoration-muted="newo_integration_state == 'not_provisioned'"/>
+                        </setting>
+                        <setting string="Integration User">
+                            <field name="newo_integration_user_login" placeholder="Not yet generated"/>
+                        </setting>
+                        <setting string="Database">
+                            <field name="newo_database_name"/>
+                        </setting>
+                        <setting string="Base URL">
+                            <field name="newo_base_url"/>
+                        </setting>
+                        <setting string="Business Timezone" help="Used by Newo to compute availability slots in the customer's local time. Read from the active company's working-hours calendar.">
+                            <field name="newo_company_tz"/>
+                        </setting>
+                        <setting string="Last Provisioned">
+                            <field name="newo_last_provisioned_at"/>
+                        </setting>
+                        <setting string="Actions">
+                            <button name="action_provision_integration"
+                                    type="object"
+                                    string="Generate Credentials"
+                                    class="btn-primary"
+                                    confirm="A new API key will be generated and shown only once. Existing keys for this integration user will be revoked. Continue?"/>
+                            <button name="action_revoke_integration"
+                                    type="object"
+                                    string="Revoke"
+                                    class="btn-secondary"
+                                    invisible="newo_integration_state != 'active'"
+                                    confirm="This will delete all API keys and archive the integration user. Newo will lose access immediately. Continue?"/>
+                        </setting>
+                    </block>
+                    <block title="Step 3 — Connect to Newo" id="newo_agent_creator_block">
+                        <setting string="Create a new agent" help="First-time setup: launch Newo VibeCreator in a new tab. Paste the credentials from Step 2 to provision your AI Receptionist agent.">
+                            <button name="action_open_agent_creator"
+                                    type="object"
+                                    string="Open VibeCreator ↗"
+                                    class="btn-primary"/>
+                        </setting>
+                        <setting string="Manage existing integration" help="Already have a Newo account? Open the Newo Portal to manage agents, view conversations, billing, and team access.">
+                            <button name="action_open_newo_portal"
+                                    type="object"
+                                    string="Open Newo Portal ↗"
+                                    class="btn-secondary"/>
+                        </setting>
+                    </block>
+                    <block title="Learn more" id="newo_resources_block">
+                        <setting string="Pricing" help="See current Newo subscription plans.">
+                            <a href="https://newo.ai/pricing/" target="_blank" class="btn btn-link">newo.ai/pricing ↗</a>
+                        </setting>
+                        <setting string="Documentation" help="Setup guides and how-tos for the Newo platform.">
+                            <a href="https://help.newo.ai/" target="_blank" class="btn btn-link">help.newo.ai ↗</a>
+                        </setting>
+                        <setting string="Academy" help="Training courses for Newo agent builders.">
+                            <a href="https://academy.newo.ai/" target="_blank" class="btn btn-link">academy.newo.ai ↗</a>
+                        </setting>
+                        <setting string="Book a demo" help="Talk to the Newo team about your use case.">
+                            <a href="https://newo.ai/book-a-demo/" target="_blank" class="btn btn-link">Book a demo ↗</a>
+                        </setting>
+                        <setting string="About Newo" help="Product overview, case studies, and use cases.">
+                            <a href="https://newo.ai/about/" target="_blank" class="btn btn-link">About ↗</a>
+                            <span class="mx-2">·</span>
+                            <a href="https://newo.ai/case-studies/" target="_blank" class="btn btn-link">Case studies ↗</a>
+                        </setting>
+                        <setting string="Support" help="Reach the Newo team for help with this connector.">
+                            <a href="mailto:support@newo.ai" class="btn btn-link">support@newo.ai</a>
+                        </setting>
+                        <setting string="Privacy &amp; Terms" help="Newo's privacy policy and terms of service.">
+                            <a href="https://newo.ai/privacy-policy/" target="_blank" class="btn btn-link">Privacy ↗</a>
+                            <span class="mx-2">·</span>
+                            <a href="https://newo.ai/terms-of-service/" target="_blank" class="btn btn-link">Terms ↗</a>
+                        </setting>
+                    </block>
+                </app>
+            </xpath>
+        </field>
+    </record>
+</odoo>

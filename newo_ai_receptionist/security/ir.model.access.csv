@@ -1,0 +1,7 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_credentials_wizard_admin,access.credentials.wizard.admin,model_newo_credentials_wizard,base.group_system,1,1,1,1
+access_partner_newo_integration,access.partner.newo.integration,base.model_res_partner,group_newo_integration,1,1,1,0
+access_lead_newo_integration,access.lead.newo.integration,crm.model_crm_lead,group_newo_integration,1,1,1,0
+access_calendar_event_newo_integration,access.calendar.event.newo.integration,calendar.model_calendar_event,group_newo_integration,1,1,1,1
+access_res_company_newo_integration,access.res.company.newo.integration,base.model_res_company,group_newo_integration,1,0,0,0
+access_resource_calendar_newo_integration,access.resource.calendar.newo.integration,resource.model_resource_calendar,group_newo_integration,1,0,0,0
