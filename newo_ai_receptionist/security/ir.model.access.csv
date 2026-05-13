@@ -5,3 +5,5 @@ access_lead_newo_integration,access.lead.newo.integration,crm.model_crm_lead,gro
 access_calendar_event_newo_integration,access.calendar.event.newo.integration,calendar.model_calendar_event,group_newo_integration,1,1,1,1
 access_res_company_newo_integration,access.res.company.newo.integration,base.model_res_company,group_newo_integration,1,0,0,0
 access_resource_calendar_newo_integration,access.resource.calendar.newo.integration,resource.model_resource_calendar,group_newo_integration,1,0,0,0
+access_newo_conversation_admin,access.newo.conversation.admin,model_newo_conversation,base.group_system,1,1,1,1
+access_newo_conversation_integration,access.newo.conversation.integration,model_newo_conversation,group_newo_integration,1,1,1,0

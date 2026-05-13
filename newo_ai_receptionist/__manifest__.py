@@ -35,6 +35,7 @@ module itself is free.
     "data": [
         "security/newo_security.xml",
         "security/ir.model.access.csv",
+        "views/newo_conversation_views.xml",
         "views/newo_credentials_wizard_views.xml",
         "views/res_config_settings_views.xml",
     ],
@@ -43,4 +44,5 @@ module itself is free.
     "application": False,
     "auto_install": False,
     "uninstall_hook": "uninstall_hook",
+    "images": ["static/description/banner.png"],
 }

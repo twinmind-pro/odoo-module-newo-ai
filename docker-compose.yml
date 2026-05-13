@@ -2,9 +2,9 @@ services:
   db:
     image: postgres:16
     environment:
-      POSTGRES_DB: postgres
-      POSTGRES_USER: odoo
-      POSTGRES_PASSWORD: odoo
+      POSTGRES_DB: ${POSTGRES_DB:-postgres}
+      POSTGRES_USER: ${POSTGRES_USER:-odoo}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-odoo}
     volumes:
       - db-data:/var/lib/postgresql/data
     restart: unless-stopped
@@ -18,16 +18,16 @@ services:
       - "8072:8072"
     environment:
       HOST: db
-      USER: odoo
-      PASSWORD: odoo
+      USER: ${POSTGRES_USER:-odoo}
+      PASSWORD: ${POSTGRES_PASSWORD:-odoo}
     volumes:
       - ./newo_ai_receptionist:/mnt/extra-addons/newo_ai_receptionist:ro
       - odoo-data:/var/lib/odoo
     command:
       - odoo
       - --db_host=db
-      - --db_user=odoo
-      - --db_password=odoo
+      - --db_user=${POSTGRES_USER:-odoo}
+      - --db_password=${POSTGRES_PASSWORD:-odoo}
       - --addons-path=/usr/lib/python3/dist-packages/odoo/addons,/mnt/extra-addons
       - --dev=reload,xml
     restart: unless-stopped
