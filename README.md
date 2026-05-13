@@ -4,7 +4,7 @@ Free Odoo connector that links Odoo to the Newo AI Receptionist SaaS platform.
 
 ## Status
 
-**Bootstrap.** Empty module skeleton. Installs on Odoo 19 without errors. No business logic yet.
+**v1.0.0 — credential provisioning.** Generates a dedicated integration user, a 1-year API key, and an HMAC webhook secret from the Settings page, then displays them once in a wizard for paste-into-Newo. Inbound `/newo/webhook/conversation` endpoint verifies `X-Newo-Signature` (HMAC-SHA256) and ingests payloads into `newo.conversation`. Uninstall hook drops the user, API keys, webhook secret, and config parameters.
 
 ## Targets
 

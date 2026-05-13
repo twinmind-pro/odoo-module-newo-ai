@@ -1,5 +1,6 @@
 import logging
 import re
+import secrets
 from datetime import timedelta
 
 from odoo import _, api, fields, models
@@ -137,8 +138,10 @@ class ResConfigSettings(models.TransientModel):
         ]).unlink()
         expiration = fields.Datetime.now() + timedelta(days=365)
         plaintext_key = ApiKeys.with_user(user)._generate("rpc", API_KEY_NAME, expiration)
+        webhook_secret = secrets.token_urlsafe(32)
         params = self.env["ir.config_parameter"].sudo()
         params.set_param("newo_ai_receptionist.integration_user_id", str(user.id))
+        params.set_param("newo_ai_receptionist.webhook_secret", webhook_secret)
         params.set_param(
             "newo_ai_receptionist.last_provisioned_at",
             fields.Datetime.now().isoformat(sep=" "),
@@ -146,6 +149,7 @@ class ResConfigSettings(models.TransientModel):
         base_url = params.get_param("web.base.url", "")
         wizard = self.env["newo.credentials.wizard"].create({
             "api_key": plaintext_key,
+            "webhook_secret": webhook_secret,
             "user_login": user.login,
             "database_name": self.env.cr.dbname,
             "base_url": base_url,

@@ -12,6 +12,7 @@ class NewoCredentialsWizard(models.TransientModel):
 
     user_login = fields.Char(string="Username (login)", readonly=True)
     api_key = fields.Char(string="API Key", readonly=True)
+    webhook_secret = fields.Char(string="Webhook Secret", readonly=True)
     database_name = fields.Char(string="Database", readonly=True)
     base_url = fields.Char(string="Base URL", readonly=True)
     company_tz = fields.Char(string="Business Timezone", readonly=True)

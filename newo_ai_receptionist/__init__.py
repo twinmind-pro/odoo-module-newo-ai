@@ -1,4 +1,4 @@
-from . import models
+from . import controllers, models
 
 
 def uninstall_hook(env):
@@ -9,6 +9,7 @@ def uninstall_hook(env):
         "newo_ai_receptionist.last_provisioned_at",
         "newo_ai_receptionist.data_consent",
         "newo_ai_receptionist.agent_external_id",
+        "newo_ai_receptionist.webhook_secret",
     ):
         params.search([("key", "=", key)]).unlink()
 
