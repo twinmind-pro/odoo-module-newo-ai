@@ -1,6 +1,6 @@
 {
     "name": "Newo AI Receptionist",
-    "version": "19.0.1.0.0",
+    "version": "19.0.1.1.0",
     "summary": "Connect Odoo to Newo AI Receptionist — answers calls, books appointments, captures leads",
     "description": """
 Newo AI Receptionist Connector
